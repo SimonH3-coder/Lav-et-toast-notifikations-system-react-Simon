@@ -1,0 +1,53 @@
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  min-width: 200px;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 1rem;
+}
+
+.success {
+  background: rgb(30, 141, 30);
+}
+
+.error {
+  background: red;
+}
+
+.warning {
+  background: yellow;
+  color: #333;
+}
+
+// Position og placering
+.toastContainer {
+  position: fixed;
+  z-index: 8000;
+  pointer-events: none;
+}
+
+.top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.bottom-right {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
