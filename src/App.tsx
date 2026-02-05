@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Toastcomponent } from "./components/Toastcomponent.tsx";
+import ToastComponent from "./components/Toastcomponent";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Toastcomponent />
+      <ToastComponent />
     </>
   );
 }

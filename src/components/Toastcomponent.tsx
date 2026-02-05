@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from "./Toastcomponent.module.scss";
 
+
 type ToastType = "success" | "error" | "warning";
 type ToastPosition = "top-left" | "top-right" | "bottom-left" | "bottom-right";
+
 
 interface ToastProps {
     message: string;
     type?: ToastType;
     visible: boolean;
+    id?: number;
 }
 
 interface ToastContainerProps {
@@ -15,14 +18,16 @@ interface ToastContainerProps {
     position?: ToastPosition;
 }
 
+
+
 const Toast: React.FC<ToastProps> = ({ message, type = "success" }) => (
 <div className={`${styles.toast} ${styles[type]}`}>
             {message}
         </div>
 )
 
-const ToastContainer: React.FC<ToastContainerProps> = ({ toasts, position  }) => (
-    <div className={`${styles.toastContainer} ${styles[position]}`}>
+const ToastContainer: React.FC<ToastContainerProps> = ({ toasts }) => (
+    <div className={`${styles.toastContainer}`}>
         {toasts.map((toast) => (
             <Toast key={toast.id} {...toast} />
         ))}
@@ -37,7 +42,7 @@ export function useToast(timeout = 3000, position: ToastPosition = "top-right") 
         toastId.current += 1;
         setToasts((prev) => [
             ...prev,
-            { message, type: type || "success", id: toastId.current }
+            { message, type: type || "success", id: toastId.current, visible: true }
         ]);
     }, []);
 
@@ -50,7 +55,7 @@ export function useToast(timeout = 3000, position: ToastPosition = "top-right") 
             setTimeout(() => {
             
                 setToasts((prev) => prev.filter((t) => t.id !== toast.id));
-            }, timeout);
+            }, timeout)
         );
             return () => timers.forEach(clearTimeout);   
         }, [toasts, timeout]);
